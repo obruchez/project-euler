@@ -11,19 +11,15 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
  */
 
 class P2 {
-  val limit = 4000000
-
   def solve() {
+    val limit = 4000000
+
     @tailrec def sum(t1: Int, t2: Int, currentSum: Int): Int = {
       val nextTerm = t1 + t2
       if (nextTerm >= limit)
         currentSum
       else {
-        val newSum =
-          if (nextTerm % 2 == 0)
-            currentSum + nextTerm
-          else
-            currentSum
+        val newSum = if (nextTerm % 2 == 0) (currentSum + nextTerm) else currentSum
         sum(t2, nextTerm, newSum)
       }
     }
